@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card p-4 text-white">
+            <h2 class="text-center mb-4 text-info"><i class="fas fa-plus-square"></i> Initialize New Project</h2>
+
+            <form action="/add" method="POST" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label class="form-label">Project Title</label>
+                    <input type="text" name="title" class="form-control bg-dark text-white border-secondary" placeholder="e.g. AI Face Recognition" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Project Screenshot</label>
+                    <input type="file" name="image" class="form-control bg-dark text-white border-secondary">
+                    <div class="form-text text-muted">Allowed: jpg, png, jpeg</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tech Stack</label>
+                    <input type="text" name="tech_stack" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Python, OpenCV, TensorFlow">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">GitHub Link</label>
+                    <input type="text" name="github_link" class="form-control bg-dark text-white border-secondary" placeholder="https://github.com/...">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="description" class="form-control bg-dark text-white border-secondary" rows="4" placeholder="Describe your system..."></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">DEPLOY PROJECT</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

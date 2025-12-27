@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card p-4 text-white">
+            <h2 class="text-center mb-4 text-info"><i class="fas fa-edit"></i> Edit Project</h2>
+            
+            <form action="/edit-project/{{ project[0] }}" method="POST" enctype="multipart/form-data">
+                
+                <div class="mb-3">
+                    <label class="form-label">Project Title</label>
+                    <input type="text" name="title" class="form-control bg-dark text-white border-secondary" value="{{ project[1] }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Update Screenshot (Optional)</label>
+                    <input type="file" name="image" class="form-control bg-dark text-white border-secondary">
+                    <div class="form-text text-muted">Leave empty to keep current image.</div>
+                    <input type="hidden" name="old_image" value="{{ project[5] }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tech Stack</label>
+                    <input type="text" name="tech_stack" class="form-control bg-dark text-white border-secondary" value="{{ project[3] }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">GitHub Link</label>
+                    <input type="text" name="github_link" class="form-control bg-dark text-white border-secondary" value="{{ project[4] }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="description" class="form-control bg-dark text-white border-secondary" rows="4">{{ project[2] }}</textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-info btn-lg text-dark fw-bold">SAVE CHANGES</button>
+                    <a href="/" class="btn btn-outline-light">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

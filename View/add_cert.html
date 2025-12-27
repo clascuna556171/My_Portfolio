@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card p-4 text-white">
+            <h2 class="text-center mb-4 text-warning"><i class="fas fa-certificate"></i> Add New Certificate</h2>
+            
+            <form action="/add-certificate" method="POST">
+                
+                <div class="mb-3">
+                    <label class="form-label">Certificate Name</label>
+                    <input type="text" name="title" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Cisco Certified Network Associate" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Issuer / Organization</label>
+                        <input type="text" name="issuer" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Cisco / Udemy" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Year Earned</label>
+                        <input type="text" name="year" class="form-control bg-dark text-white border-secondary" placeholder="e.g. 2024">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Credential URL (Link)</label>
+                    <input type="text" name="link" class="form-control bg-dark text-white border-secondary" placeholder="https://...">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Short Description</label>
+                    <textarea name="description" class="form-control bg-dark text-white border-secondary" rows="3" placeholder="What did you learn?"></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-warning btn-lg text-dark fw-bold">PUBLISH CERTIFICATE</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

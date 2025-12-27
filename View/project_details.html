@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5">
+    
+    <a href="/#projects" class="btn btn-outline-light mb-4 rounded-pill">
+        <i class="fas fa-arrow-left me-2"></i> Back to Projects
+    </a>
+
+    <div class="row">
+        <div class="col-lg-5 mb-4">
+            <div class="glass-card p-2">
+                {% if project[5] and project[5] != 'default.jpg' %}
+                    <img src="{{ url_for('static', filename='uploads/' + project[5]) }}" class="img-fluid rounded shadow w-100" alt="Project Screenshot">
+                {% else %}
+                    <div class="bg-dark text-center py-5 rounded">
+                        <i class="fas fa-code fa-5x text-secondary"></i>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <a href="{{ project[4] }}" target="_blank" class="btn btn-info btn-lg fw-bold">
+                    <i class="fab fa-github me-2"></i> View Source Code
+                </a>
+                
+                {% if session['loggedin'] %}
+                <a href="/edit-project/{{ project[0] }}" class="btn btn-warning">
+                    <i class="fas fa-edit me-2"></i> Edit This Project
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="glass-card p-5 h-100">
+                <h1 class="display-4 fw-bold text-white mb-3">{{ project[1] }}</h1>
+                
+                <div class="mb-4">
+                    {% for tech in project[3].split(',') %}
+                        <span class="badge bg-dark border border-info text-info me-2 p-2 mb-2">{{ tech.strip() }}</span>
+                    {% endfor %}
+                </div>
+
+                <h4 class="text-white border-bottom border-secondary pb-2 mb-4">Project Overview</h4>
+                
+                <div class="text-secondary lead" style="white-space: pre-wrap;">{{ project[2] }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

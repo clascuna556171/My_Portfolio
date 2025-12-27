@@ -1,0 +1,262 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section id="home" class="py-5 text-center">
+    <div class="row align-items-center">
+        <div class="col-lg-7 text-lg-start">
+            <h5 class="text-info mb-3">
+                <i class="fas fa-code"></i> HELLO, WORLD!
+            </h5>
+            <h1 class="display-3 fw-bold text-white">I'm <span class="text-gradient">Christian Lascuña</span></h1>
+            <p class="lead text-secondary mb-4">
+                Aspiring <b>Software Engineer</b> & <b>BSIT Student</b> at the <br>
+                University of Mindanao.
+            </p>
+
+            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                <a href="#projects" class="btn btn-primary btn-lg px-4 rounded-pill shadow-lg">
+                    View My Work <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+
+                <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-info btn-lg px-4 rounded-pill">
+                    <i class="fas fa-file-download me-2"></i> Download CV
+                </a>
+            </div>
+            </div>
+
+        <div class="col-lg-5 mt-5 mt-lg-0">
+            <div class="glass-card p-4 rounded-4 position-relative">
+                <div class="position-absolute top-0 start-50 translate-middle badge bg-primary px-3 py-2 rounded-pill">
+                    developer_profile.py
+                </div>
+
+                <img src="{{ url_for('static', filename='profile.png') }}"
+                     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Christian+L&background=00d2ff&color=000&size=150';"
+                     class="profile-img shadow"
+                     alt="Christian Lascuña">
+
+                <div class="text-start font-monospace text-muted small">
+                    <p class="mb-1"><span class="text-info">name</span> = "Christian R. Lascuña"</p>
+                    <p class="mb-1"><span class="text-info">age</span> = 20</p>
+                    <p class="mb-1"><span class="text-info">location</span> = "Panabo City, PH"</p>
+                    <p class="mb-1"><span class="text-info">education</span> = "BSIT, Univ of Mindanao"</p>
+                    <p class="mb-0"><span class="text-success">status</span> = "Open to Work"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row text-center py-4 mb-5">
+    <p class="text-muted text-uppercase letter-spacing-2">Tech Stack Arsenal</p>
+    <div class="col d-flex justify-content-center gap-4 flex-wrap display-6 text-secondary">
+        <i class="fab fa-python hover-white transition" title="Python"></i>
+        <i class="fab fa-java hover-white transition" title="Java"></i>
+        <i class="fas fa-database hover-white transition" title="MySQL"></i>
+        <i class="fab fa-html5 hover-white transition" title="HTML5"></i>
+        <i class="fab fa-git-alt hover-white transition" title="Git"></i>
+        <i class="fas fa-network-wired hover-white transition" title="Networking Fundamentals"></i>
+    </div>
+</div>
+
+<hr class="border-secondary my-5">
+
+<section id="journey" class="mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="glass-card p-4 rounded-4">
+                <h3 class="text-white mb-4"><i class="fas fa-history text-primary me-2"></i>My Journey</h3>
+
+                <div class="d-flex border-start border-secondary ps-4 pb-4 position-relative">
+                    <div class="position-absolute start-0 top-0 translate-middle bg-info rounded-circle" style="width: 12px; height: 12px;"></div>
+                    <div>
+                        <span class="badge bg-primary mb-2">2026 - Present</span>
+                        <h5 class="fw-bold">Bachelor of Science in IT</h5>
+                        <p class="text-info mb-1">University of Mindanao</p>
+                        <p class="text-muted small">Specializing in Systems Development and Database Management. </p>
+                    </div>
+                </div>
+
+                <div class="d-flex border-start border-secondary ps-4 position-relative">
+                    <div class="position-absolute start-0 top-0 translate-middle bg-secondary rounded-circle" style="width: 12px; height: 12px;"></div>
+                    <div>
+                        <span class="badge bg-secondary mb-2">2025</span>
+                        <h5 class="fw-bold">Freelance Developer</h5>
+                        <p class="text-info mb-1">Self-Employed</p>
+                        <p class="text-muted small">Developed POS systems and custom scripts for local clients using Python.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certificates" class="mb-5">
+    <h2 class="text-white fw-bold text-center mb-4"><i class="fas fa-certificate text-warning me-2"></i>Certifications</h2>
+
+    <div class="row justify-content-center">
+        {% for cert in certificates %}
+        <div class="col-md-5 mb-4">
+             <div class="glass-card p-4 text-center h-100 position-relative">
+
+                 {% if session['loggedin'] %}
+                 <div class="position-absolute top-0 end-0 p-3">
+                     <a href="/edit-certificate/{{ cert[0] }}" class="text-warning me-2"><i class="fas fa-edit"></i></a>
+                     <a href="/delete-certificate/{{ cert[0] }}" class="text-danger" onclick="return confirm('Delete this certificate?')"><i class="fas fa-trash-alt"></i></a>
+                 </div>
+                 {% endif %}
+
+                 <div class="position-absolute top-0 start-50 translate-middle bg-dark border border-warning rounded-circle p-2">
+                     <i class="fas fa-award text-warning"></i>
+                 </div>
+
+                 <h5 class="fw-bold mt-3">{{ cert[1] }}</h5>
+                 <p class="text-info small mb-1">{{ cert[2] }}</p>
+                 <p class="text-muted small">{{ cert[3] }}</p>
+                 <span class="badge bg-dark border border-secondary mb-3">Earned {{ cert[4] }}</span>
+                 <br>
+
+                 {% if cert[5] %}
+                 <a href="{{ cert[5] }}" target="_blank" class="btn btn-outline-warning btn-sm rounded-pill">
+                     View Credential <i class="fas fa-external-link-alt ms-1"></i>
+                 </a>
+                 {% endif %}
+             </div>
+        </div>
+        {% endfor %}
+
+        {% if not certificates %}
+        <div class="col-12 text-center text-muted py-4">
+            <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
+            <p>Certifications are being updated.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<hr class="border-secondary my-5">
+
+<section id="projects">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <h2 class="text-white fw-bold"><i class="fas fa-laptop-code text-primary me-2"></i>Projects</h2>
+            <p class="text-muted mb-0">What I've been working on lately.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card glass-card h-100 text-white overflow-hidden">
+
+                {% if project[5] and project[5] != 'default.jpg' %}
+                    <img src="{{ url_for('static', filename='uploads/' + project[5]) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Project Image">
+                {% else %}
+                    <div class="card-img-top bg-dark d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-code fa-3x text-secondary"></i>
+                    </div>
+                {% endif %}
+
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-secondary opacity-75">{{ project[3] }}</span>
+                    </div>
+
+                    <h4 class="card-title fw-bold">{{ project[1] }}</h4>
+                    <p class="card-text text-secondary small">{{ project[2] }}</p>
+                </div>
+
+                <div class="card-footer bg-transparent border-top border-secondary p-3">
+                    <div class="d-flex gap-2 mb-2">
+                        <a href="/project/{{ project[0] }}" class="btn btn-primary btn-sm flex-grow-1 rounded-pill">
+                            <i class="fas fa-eye me-1"></i> View Details
+                        </a>
+                        <a href="{{ project[4] }}" target="_blank" class="btn btn-outline-info btn-sm flex-grow-1 rounded-pill">
+                            <i class="fab fa-github me-1"></i> Code
+                        </a>
+                    </div>
+
+                    {% if session['loggedin'] %}
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="/edit-project/{{ project[0] }}" class="btn btn-warning btn-sm rounded-circle text-dark" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="/delete-project/{{ project[0] }}" class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Delete this project?')" title="Delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if not projects %}
+        <div class="col-12 text-center text-muted py-5 glass-card rounded-3">
+            <i class="fas fa-terminal fa-3x mb-3 text-secondary"></i>
+            <h4>No Projects Deployed Yet</h4>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<footer id="contact" class="py-5 mt-5 border-top border-secondary">
+    <div class="container text-center">
+        <h3 class="text-white mb-4">Let's Connect</h3>
+
+        <div class="d-flex justify-content-center gap-3 mb-5">
+            <a href="https://github.com/clascuna556171" target="_blank" class="btn btn-dark btn-lg rounded-circle border border-secondary text-white">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.facebook.com/s3bazzz.0/" target="_blank" class="btn btn-dark btn-lg rounded-circle border border-secondary text-primary">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="mailto:christianlascuna098@gmail.com" class="btn btn-dark btn-lg rounded-circle border border-secondary text-danger">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <p class="text-muted mb-4">Or send me a direct message below:</p>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="glass-card p-4 text-start">
+                    <form action="/send-message" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="text-muted small">Your Name</label>
+                                <input type="text" name="name" class="form-control bg-dark text-white border-secondary" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="text-muted small">Your Email</label>
+                                <input type="email" name="email" class="form-control bg-dark text-white border-secondary" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="text-muted small">Message</label>
+                            <textarea name="message" class="form-control bg-dark text-white border-secondary" rows="4" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 text-muted small">
+            &copy; 2025 Christian Lascuña.
+        </div>
+    </div>
+</footer>
+
+<style>
+    .hover-white:hover { color: white; transform: scale(1.1); cursor: pointer; }
+    .transition { transition: all 0.3s ease; }
+</style>
+
+{% endblock %}

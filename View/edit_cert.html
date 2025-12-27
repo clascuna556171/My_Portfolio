@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card glass-card p-4 text-white">
+            <h2 class="text-center mb-4 text-warning"><i class="fas fa-edit"></i> Edit Certificate</h2>
+            
+            <form action="/edit-certificate/{{ cert[0] }}" method="POST">
+                
+                <div class="mb-3">
+                    <label class="form-label">Certificate Name</label>
+                    <input type="text" name="title" class="form-control bg-dark text-white border-secondary" value="{{ cert[1] }}" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Issuer</label>
+                        <input type="text" name="issuer" class="form-control bg-dark text-white border-secondary" value="{{ cert[2] }}" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Year Earned</label>
+                        <input type="text" name="year" class="form-control bg-dark text-white border-secondary" value="{{ cert[4] }}">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Credential URL</label>
+                    <input type="text" name="link" class="form-control bg-dark text-white border-secondary" value="{{ cert[5] }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Short Description</label>
+                    <textarea name="description" class="form-control bg-dark text-white border-secondary" rows="3">{{ cert[3] }}</textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-warning btn-lg text-dark fw-bold">SAVE CHANGES</button>
+                    <a href="/" class="btn btn-outline-light">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="glass-card p-4 text-white">
+            <h2 class="text-center mb-4 text-primary"><i class="fas fa-route"></i> Add Journey Step</h2>
+            
+            <form action="/add-journey" method="POST">
+                <div class="mb-3">
+                    <label>Year / Duration</label>
+                    <input type="text" name="year" class="form-control bg-dark text-white border-secondary" placeholder="e.g. 2023 - Present" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Title (Job/Degree)</label>
+                    <input type="text" name="title" class="form-control bg-dark text-white border-secondary" placeholder="e.g. BSIT Student" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label>Subtitle (School/Company)</label>
+                    <input type="text" name="subtitle" class="form-control bg-dark text-white border-secondary" placeholder="e.g. University of Mindanao">
+                </div>
+
+                <div class="mb-3">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control bg-dark text-white border-secondary" rows="3" placeholder="Achievements..."></textarea>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Add to Timeline</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
