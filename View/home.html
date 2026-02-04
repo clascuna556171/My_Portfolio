@@ -2,16 +2,21 @@
 
 {% block content %}
 
+<button id="theme-toggle" class="btn btn-dark position-fixed bottom-0 end-0 m-4 rounded-circle shadow-lg" style="z-index: 1000; width: 50px; height: 50px; border: 1px solid var(--glass-border);">
+    <i class="fas fa-moon"></i>
+</button>
+
 <section id="home" class="py-5 text-center">
     <div class="row align-items-center">
         <div class="col-lg-7 text-lg-start">
-            <h5 class="text-info mb-3">
-                <i class="fas fa-code"></i> HELLO, WORLD!
+            <h5 class="text-highlight mb-3">
+                <i class="fas fa-code icon-purple"></i> HELLO, WORLD!
             </h5>
-            <h1 class="display-3 fw-bold text-white">I'm <span class="text-gradient">Christian Lascuña</span></h1>
-            <p class="lead text-secondary mb-4">
-                Aspiring <b>Software Engineer</b> & <b>BSIT Student</b> at the <br>
-                University of Mindanao.
+            <h1 class="display-3 fw-bold text-main">I'm <span class="text-gradient">Christian Lascuña</span></h1>
+            <p class="lead text-subtle mb-4">
+                Aspiring Software & Network Engineer. A BSIT Student at the University of Mindanao
+                building solutions with <span class="fw-bold text-highlight">Python, Java, MySQL, HTML, CSS</span>
+                and mastering <span class="fw-bold text-highlight">Networking Fundamentals</span>.
             </p>
 
             <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
@@ -19,11 +24,11 @@
                     View My Work <i class="fas fa-arrow-right ms-2"></i>
                 </a>
 
-                <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-info btn-lg px-4 rounded-pill">
+                <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-outline-custom btn-lg px-4 rounded-pill">
                     <i class="fas fa-file-download me-2"></i> Download CV
                 </a>
             </div>
-            </div>
+        </div>
 
         <div class="col-lg-5 mt-5 mt-lg-0">
             <div class="glass-card p-4 rounded-4 position-relative">
@@ -32,16 +37,16 @@
                 </div>
 
                 <img src="{{ url_for('static', filename='profile.png') }}"
-                     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Christian+L&background=00d2ff&color=000&size=150';"
-                     class="profile-img shadow"
+                     onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Christian+L&background=bf00ff&color=fff&size=150';"
+                     class="profile-img shadow mb-3"
                      alt="Christian Lascuña">
 
-                <div class="text-start font-monospace text-muted small">
-                    <p class="mb-1"><span class="text-info">name</span> = "Christian R. Lascuña"</p>
-                    <p class="mb-1"><span class="text-info">age</span> = 20</p>
-                    <p class="mb-1"><span class="text-info">location</span> = "Panabo City, PH"</p>
-                    <p class="mb-1"><span class="text-info">education</span> = "BSIT, Univ of Mindanao"</p>
-                    <p class="mb-0"><span class="text-success">status</span> = "Open to Work"</p>
+                <div class="text-start font-monospace small code-block">
+                    <p class="mb-1"><span class="var-name">name</span> = <span class="string">"Christian R. Lascuña"</span></p>
+                    <p class="mb-1"><span class="var-name">age</span> = <span class="number">20</span></p>
+                    <p class="mb-1"><span class="var-name">location</span> = <span class="string">"Panabo City, PH"</span></p>
+                    <p class="mb-1"><span class="var-name">education</span> = <span class="string">"BSIT, University of Mindanao"</span></p>
+                    <p class="mb-0"><span class="keyword">status</span> = <span class="string">"Open to Work"</span></p>
                 </div>
             </div>
         </div>
@@ -49,44 +54,132 @@
 </section>
 
 <div class="row text-center py-4 mb-5">
-    <p class="text-muted text-uppercase letter-spacing-2">Tech Stack Arsenal</p>
-    <div class="col d-flex justify-content-center gap-4 flex-wrap display-6 text-secondary">
-        <i class="fab fa-python hover-white transition" title="Python"></i>
-        <i class="fab fa-java hover-white transition" title="Java"></i>
-        <i class="fas fa-database hover-white transition" title="MySQL"></i>
-        <i class="fab fa-html5 hover-white transition" title="HTML5"></i>
-        <i class="fab fa-git-alt hover-white transition" title="Git"></i>
-        <i class="fas fa-network-wired hover-white transition" title="Networking Fundamentals"></i>
+    <p class="text-subtle text-uppercase letter-spacing-2">Tech Stack Arsenal</p>
+    <div class="col d-flex justify-content-center gap-4 flex-wrap display-6 text-subtle">
+        <i class="fab fa-python stack-icon" title="Python"></i>
+        <i class="fab fa-java stack-icon" title="Java"></i>
+        <i class="fas fa-database stack-icon" title="MySQL"></i>
+        <i class="fab fa-html5 stack-icon" title="HTML5"></i>
+        <i class="fab fa-git-alt stack-icon" title="Git"></i>
+        <i class="fas fa-network-wired stack-icon" title="Networking Fundamentals"></i>
     </div>
 </div>
 
-<hr class="border-secondary my-5">
+<hr class="divider my-5">
+
+<section id="services" class="mb-5">
+    <div class="text-center mb-5">
+        <h2 class="text-main fw-bold"><i class="fas fa-tools text-primary me-2"></i>What I Do</h2>
+        <p class="text-subtle">Turning logic into code and problems into solutions.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="glass-card p-4 h-100 border-start border-4 border-primary rounded-3 hover-lift">
+                <div class="d-flex align-items-start">
+                    <div class="me-3 mt-1">
+                        <i class="fas fa-laptop-code fa-2x text-primary"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-main fw-bold">Web Development</h5>
+                        <p class="text-subtle small mb-0">Building responsive and user-friendly website layouts using HTML, CSS, and Bootstrap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="glass-card p-4 h-100 border-start border-4 border-warning rounded-3 hover-lift">
+                <div class="d-flex align-items-start">
+                    <div class="me-3 mt-1">
+                        <i class="fas fa-brain fa-2x text-warning"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-main fw-bold">Programming Logic</h5>
+                        <p class="text-subtle small mb-0">Developing basic automation scripts and solving logical problems using Python and Java.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="glass-card p-4 h-100 border-start border-4 border-info rounded-3 hover-lift">
+                <div class="d-flex align-items-start">
+                    <div class="me-3 mt-1">
+                        <i class="fas fa-database fa-2x text-info"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-main fw-bold">Database Basics</h5>
+                        <p class="text-subtle small mb-0">Designing simple databases and writing SQL queries for data management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="glass-card p-4 h-100 border-start border-4 border-success rounded-3 hover-lift">
+                <div class="d-flex align-items-start">
+                    <div class="me-3 mt-1">
+                        <i class="fas fa-users fa-2x text-success"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-main fw-bold">Student Assistance</h5>
+                        <p class="text-subtle small mb-0">Helping fellow students with IT projects, debugging code, and academic assignments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider my-5">
 
 <section id="journey" class="mb-5">
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <div class="glass-card p-4 rounded-4">
-                <h3 class="text-white mb-4"><i class="fas fa-history text-primary me-2"></i>My Journey</h3>
+                <h3 class="text-main mb-4"><i class="fas fa-history text-primary me-2"></i>My Journey</h3>
 
+                {% for item in journey %}
                 <div class="d-flex border-start border-secondary ps-4 pb-4 position-relative">
-                    <div class="position-absolute start-0 top-0 translate-middle bg-info rounded-circle" style="width: 12px; height: 12px;"></div>
-                    <div>
-                        <span class="badge bg-primary mb-2">2026 - Present</span>
-                        <h5 class="fw-bold">Bachelor of Science in IT</h5>
-                        <p class="text-info mb-1">University of Mindanao</p>
-                        <p class="text-muted small">Specializing in Systems Development and Database Management. </p>
-                    </div>
-                </div>
 
-                <div class="d-flex border-start border-secondary ps-4 position-relative">
-                    <div class="position-absolute start-0 top-0 translate-middle bg-secondary rounded-circle" style="width: 12px; height: 12px;"></div>
-                    <div>
-                        <span class="badge bg-secondary mb-2">2025</span>
-                        <h5 class="fw-bold">Freelance Developer</h5>
-                        <p class="text-info mb-1">Self-Employed</p>
-                        <p class="text-muted small">Developed POS systems and custom scripts for local clients using Python.</p>
+                    {% if 'Present' in item[1] %}
+                        <div class="position-absolute start-0 top-0 translate-middle rounded-circle shadow-sm" style="width: 12px; height: 12px; background-color: var(--accent-purple);"></div>
+                    {% else %}
+                        <div class="position-absolute start-0 top-0 translate-middle bg-secondary rounded-circle" style="width: 12px; height: 12px;"></div>
+                    {% endif %}
+
+                    <div class="w-100">
+                        {% if session['loggedin'] %}
+                        <div class="float-end">
+                            <a href="/edit-journey/{{ item[0] }}" class="text-warning small text-decoration-none me-3">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+
+                            <a href="/delete-journey/{{ item[0] }}" class="text-danger small text-decoration-none" onclick="return confirm('Are you sure you want to delete this?')">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </div>
+                        {% endif %}
+
+                        {% if 'Present' in item[1] %}
+                            <span class="badge mb-2" style="background-color: var(--accent-purple);">{{ item[1] }}</span>
+                        {% else %}
+                            <span class="badge bg-secondary mb-2">{{ item[1] }}</span>
+                        {% endif %}
+
+                        <h5 class="fw-bold text-main">{{ item[2] }}</h5>
+                        <p class="text-highlight mb-1">{{ item[3] }}</p>
+                        <p class="text-subtle small">{{ item[4] }}</p>
                     </div>
                 </div>
+                {% endfor %}
+
+                {% if not journey %}
+                <div class="text-center text-subtle py-4">
+                    <p>Timeline is currently empty. Add a journey in the Admin panel!</p>
+                </div>
+                {% endif %}
 
             </div>
         </div>
@@ -94,7 +187,7 @@
 </section>
 
 <section id="certificates" class="mb-5">
-    <h2 class="text-white fw-bold text-center mb-4"><i class="fas fa-certificate text-warning me-2"></i>Certifications</h2>
+    <h2 class="text-main fw-bold text-center mb-4"><i class="fas fa-certificate text-warning me-2"></i>Certifications</h2>
 
     <div class="row justify-content-center">
         {% for cert in certificates %}
@@ -112,9 +205,9 @@
                      <i class="fas fa-award text-warning"></i>
                  </div>
 
-                 <h5 class="fw-bold mt-3">{{ cert[1] }}</h5>
-                 <p class="text-info small mb-1">{{ cert[2] }}</p>
-                 <p class="text-muted small">{{ cert[3] }}</p>
+                 <h5 class="fw-bold mt-3 text-main">{{ cert[1] }}</h5>
+                 <p class="text-highlight small mb-1">{{ cert[2] }}</p>
+                 <p class="text-subtle small">{{ cert[3] }}</p>
                  <span class="badge bg-dark border border-secondary mb-3">Earned {{ cert[4] }}</span>
                  <br>
 
@@ -128,7 +221,7 @@
         {% endfor %}
 
         {% if not certificates %}
-        <div class="col-12 text-center text-muted py-4">
+        <div class="col-12 text-center text-subtle py-4">
             <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
             <p>Certifications are being updated.</p>
         </div>
@@ -136,20 +229,20 @@
     </div>
 </section>
 
-<hr class="border-secondary my-5">
+<hr class="divider my-5">
 
 <section id="projects">
     <div class="d-flex justify-content-between align-items-end mb-5">
         <div>
-            <h2 class="text-white fw-bold"><i class="fas fa-laptop-code text-primary me-2"></i>Projects</h2>
-            <p class="text-muted mb-0">What I've been working on lately.</p>
+            <h2 class="text-main fw-bold"><i class="fas fa-laptop-code text-primary me-2"></i>Projects</h2>
+            <p class="text-subtle mb-0">What I've been working on lately.</p>
         </div>
     </div>
 
     <div class="row">
         {% for project in projects %}
         <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card glass-card h-100 text-white overflow-hidden">
+            <div class="card glass-card h-100 text-white overflow-hidden border-0">
 
                 {% if project[5] and project[5] != 'default.jpg' %}
                     <img src="{{ url_for('static', filename='uploads/' + project[5]) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Project Image">
@@ -161,19 +254,19 @@
 
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-3">
-                        <span class="badge bg-secondary opacity-75">{{ project[3] }}</span>
+                        <span class="badge bg-custom opacity-75">{{ project[3] }}</span>
                     </div>
 
-                    <h4 class="card-title fw-bold">{{ project[1] }}</h4>
-                    <p class="card-text text-secondary small">{{ project[2] }}</p>
+                    <h4 class="card-title fw-bold text-main">{{ project[1] }}</h4>
+                    <p class="card-text text-subtle small">{{ project[2] }}</p>
                 </div>
 
                 <div class="card-footer bg-transparent border-top border-secondary p-3">
                     <div class="d-flex gap-2 mb-2">
-                        <a href="/project/{{ project[0] }}" class="btn btn-primary btn-sm flex-grow-1 rounded-pill">
+                        <a href="/project/{{ project[0] }}" class="btn btn-primary btn-sm flex-grow-1 rounded-pill shadow-sm">
                             <i class="fas fa-eye me-1"></i> View Details
                         </a>
-                        <a href="{{ project[4] }}" target="_blank" class="btn btn-outline-info btn-sm flex-grow-1 rounded-pill">
+                        <a href="{{ project[4] }}" target="_blank" class="btn btn-outline-custom btn-sm flex-grow-1 rounded-pill">
                             <i class="fab fa-github me-1"></i> Code
                         </a>
                     </div>
@@ -195,7 +288,7 @@
         {% endfor %}
 
         {% if not projects %}
-        <div class="col-12 text-center text-muted py-5 glass-card rounded-3">
+        <div class="col-12 text-center text-subtle py-5 glass-card rounded-3">
             <i class="fas fa-terminal fa-3x mb-3 text-secondary"></i>
             <h4>No Projects Deployed Yet</h4>
         </div>
@@ -206,7 +299,7 @@
 
 <footer id="contact" class="py-5 mt-5 border-top border-secondary">
     <div class="container text-center">
-        <h3 class="text-white mb-4">Let's Connect</h3>
+        <h3 class="text-main mb-4">Let's Connect</h3>
 
         <div class="d-flex justify-content-center gap-3 mb-5">
             <a href="https://github.com/clascuna556171" target="_blank" class="btn btn-dark btn-lg rounded-circle border border-secondary text-white">
@@ -220,7 +313,7 @@
             </a>
         </div>
 
-        <p class="text-muted mb-4">Or send me a direct message below:</p>
+        <p class="text-subtle mb-4">Or send me a direct message below:</p>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -228,17 +321,17 @@
                     <form action="/send-message" method="POST">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="text-muted small">Your Name</label>
-                                <input type="text" name="name" class="form-control bg-dark text-white border-secondary" required>
+                                <label class="text-subtle small mb-1">Your Name</label>
+                                <input type="text" name="name" class="form-control custom-input" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="text-muted small">Your Email</label>
-                                <input type="email" name="email" class="form-control bg-dark text-white border-secondary" required>
+                                <label class="text-subtle small mb-1">Your Email</label>
+                                <input type="email" name="email" class="form-control custom-input" required>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="text-muted small">Message</label>
-                            <textarea name="message" class="form-control bg-dark text-white border-secondary" rows="4" required></textarea>
+                            <label class="text-subtle small mb-1">Message</label>
+                            <textarea name="message" class="form-control custom-input" rows="4" required></textarea>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
@@ -248,15 +341,171 @@
             </div>
         </div>
 
-        <div class="mt-5 text-muted small">
+        <div class="mt-5 text-subtle small">
             &copy; 2025 Christian Lascuña.
         </div>
     </div>
 </footer>
 
 <style>
-    .hover-white:hover { color: white; transform: scale(1.1); cursor: pointer; }
-    .transition { transition: all 0.3s ease; }
+    :root {
+        --bg-body: #121212;
+        --text-main: #ffffff;
+        --text-subtle: #a0a0a0;
+        --text-highlight: #0dcaf0;
+        --text-highlight-purple: #bf00ff;
+        --accent-purple: #bf00ff;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        --btn-outline: #0dcaf0;
+        --btn-outline-text: #0dcaf0;
+        --badge-bg: #2c3e50;
+        --divider-color: #2d2d2d;
+        --code-color: #a0a0a0;
+        --gradient-start: #0dcaf0;
+        --gradient-end: #bf00ff;
+        /* NEW VARS FOR INPUT VISIBILITY */
+        --input-bg: rgba(255, 255, 255, 0.15); /* Brighter than glass-bg */
+        --input-border: rgba(255, 255, 255, 0.3); /* Visible border */
+    }
+
+    [data-theme="light"] {
+        --bg-body: #f8f9fa;
+        --text-main: #212529;
+        --text-subtle: #6c757d;
+        --text-highlight: #0d6efd;
+        --text-highlight-purple: #800080;
+        --accent-purple: #800080;
+        --glass-bg: rgba(255, 255, 255, 0.85);
+        --glass-border: rgba(0, 0, 0, 0.1);
+        --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        --btn-outline: #0d6efd;
+        --btn-outline-text: #0d6efd;
+        --badge-bg: #e9ecef;
+        --divider-color: #dee2e6;
+        --code-color: #212529;
+        --gradient-start: #007bff;
+        --gradient-end: #800080;
+        /* NEW VARS FOR INPUT LIGHT MODE */
+        --input-bg: #ffffff;
+        --input-border: #ced4da;
+    }
+
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .text-main { color: var(--text-main) !important; }
+    .text-subtle { color: var(--text-subtle) !important; }
+    .text-highlight { color: var(--text-highlight) !important; }
+    .text-highlight-purple { color: var(--text-highlight-purple) !important; }
+
+    .text-gradient {
+        background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+    }
+
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--card-shadow);
+        transition: transform 0.2s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-5px);
+    }
+
+    .btn-outline-custom {
+        border-color: var(--btn-outline);
+        color: var(--btn-outline-text);
+    }
+    .btn-outline-custom:hover {
+        background-color: var(--btn-outline);
+        color: white;
+    }
+
+    .bg-custom {
+        background-color: var(--badge-bg);
+        color: var(--text-main);
+    }
+
+    .divider { border-color: var(--divider-color); }
+
+    .code-block { color: var(--code-color); }
+    .var-name { color: var(--text-highlight); }
+    .string { color: #ce55ca; } 
+    .number { color: #ce55ca; } 
+    .keyword { color: #3cb371 } 
+    
+    .stack-icon {
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .stack-icon:hover {
+        transform: scale(1.2);
+        color: var(--text-main);
+    }
+
+    .icon-purple {
+        color: var(--accent-purple);
+        text-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
+    }
+
+    /* CUSTOM INPUT STYLE FIX */
+    .custom-input {
+        background-color: var(--input-bg) !important;
+        border-color: var(--input-border) !important;
+        color: var(--text-main) !important;
+    }
+    
+    .custom-input:focus {
+        background-color: var(--input-bg) !important;
+        color: var(--text-main) !important;
+        border-color: var(--text-highlight) !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25);
+    }
 </style>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const icon = toggleBtn.querySelector('i');
+    const body = document.body;
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'light') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            toggleBtn.classList.remove('btn-dark');
+            toggleBtn.classList.add('btn-light');
+        }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        if (body.getAttribute('data-theme') === 'light') {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            toggleBtn.classList.remove('btn-light');
+            toggleBtn.classList.add('btn-dark');
+        } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            toggleBtn.classList.remove('btn-dark');
+            toggleBtn.classList.add('btn-light');
+        }
+    });
+</script>
 
 {% endblock %}
